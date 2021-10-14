@@ -35,8 +35,9 @@ function RightMenu(props) {
     // 로그인후
     return (
       <Menu mode={props.mode}>
-        <Menu.Item key="basket">
-          <a href="/basket">basket</a>
+        <Menu.Item key="upload">
+          <a href="/product/upload">Upload</a>     
+        
         </Menu.Item>
         
         <Menu.Item key="logout">
@@ -47,6 +48,6 @@ function RightMenu(props) {
     )
   }
 }
-
+//a href : path랑 연결
 export default withRouter(RightMenu);
 

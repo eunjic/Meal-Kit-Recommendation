@@ -1,16 +1,18 @@
 import React, {useEffect} from 'react'
-import { FaCode } from "react-icons/fa";
+import { FaCode, FaSortAmountDown } from "react-icons/fa";
 
 //백엔드에 요청
 import axios from "axios";
-export default LandingPage
+import {Icon, Col, Card, Row} from 'antd';
 
 
 function LandingPage() {
+
+
     
     useEffect(() => {
 
-        axios.post('/api/product/products')
+        axios.post('/api/product/products', )
             .then(response => {
                 if (response.data.success){
                     console.log(response.data)
@@ -27,11 +29,29 @@ function LandingPage() {
     
     
     return (
-        <div>
-            Landing Page
+        <div style ={{width: '75%', margin: '3rem auto'}} >
+
+            <div style = {{textAlign: 'center'}}>
+                <h2>추천 밀키트</h2>
+            </div>
+            {/* Filter */}
+
+
+            {/* search */}
+            
+
+
+            <div style = {{ justifyContent : 'center'}}>
+                <button>더보기</button>
+            </div>
         </div>
     )
 }
+
+
+export default LandingPage
+
+
 
 
 
