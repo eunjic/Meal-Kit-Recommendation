@@ -18,7 +18,7 @@ function NavBar() {
   return (
     <nav className="menu" style={{ position: 'fixed', zIndex: 5, width: '100%' }}>
       <div className="menu__logo">
-        <a href="/">Logo</a>
+        <a href="/" style ={{color: '#FCA3A3', fontWeight: 'bold' }}>오밀조밀</a>
       </div>
       <div className="menu__container">
         <div className="menu_left">
@@ -31,6 +31,7 @@ function NavBar() {
           className="menu__mobile-button"
           type="primary"
           onClick={showDrawer}
+          style = {{backgroundColor: '#FCA3A3', border: 'none'}}
         >
           <Icon type="align-right" />
         </Button>

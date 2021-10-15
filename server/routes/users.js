@@ -68,4 +68,29 @@ router.get("/logout", auth, (req, res) => {
     });
 });
 
+
+router.post("/addToCart", auth, (req, res) => {
+   User.findOne({_id: req.user._id},
+    (err, userInfo) => {
+        User.findOneAndUpdate(
+            {_id: req.user._id},
+            {
+                $push: {
+                    cart: {
+                        id: req.body.productID
+                    }
+                }
+            },
+            {new: true},
+            (err, userInfo) => {
+                if (err) return res.status(400).json({success: false, err})
+                res.status(200).send(userInfo.cart)
+            }
+        )
+    }
+   
+    )
+});
+          
+
 module.exports = router;
