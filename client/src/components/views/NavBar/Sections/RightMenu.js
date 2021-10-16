@@ -22,7 +22,7 @@ function RightMenu(props) {
   if (user.userData && !user.userData.isAuth) {
     //로그인 전
     return (
-      <Menu mode={props.mode}>
+      <Menu mode={props.mode}>       
         <Menu.Item key="mail">
           <a href="/login">Signin</a>
         </Menu.Item>
@@ -39,8 +39,9 @@ function RightMenu(props) {
         <Menu.Item key="cart">
           <a href="/cart">cart</a>
         </Menu.Item>
-        <Menu.Item key="upload">
-          <a href="/product/upload">Upload</a>     
+  
+        <Menu.Item key="choose">
+          <a href="/product/Choose1">choose</a>     
         </Menu.Item>
         <Menu.Item key="logout">
           <a onClick={logoutHandler}>Logout</a>

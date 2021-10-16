@@ -74,7 +74,7 @@ function RegisterPage(props) {
 
           dispatch(registerUser(dataToSubmit)).then(response => {
             if (response.payload.success) {
-              props.history.push("/product/Choose");
+              props.history.push("/login");
             } else {
               alert(response.payload.err.errmsg)
             }
