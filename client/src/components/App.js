@@ -7,7 +7,7 @@ import LoginPage from "./views/LoginPage/LoginPage.js";
 import RegisterPage from "./views/RegisterPage/RegisterPage.js";
 import NavBar from "./views/NavBar/NavBar";
 import Footer from "./views/Footer/Footer";
-import UploadProductPage from "./views/UploadProductPage/UploadProdcutPage.js";
+import UploadProductPage from "./views/UploadProductPage/UploadProductPage.js";
 import CartPage from "./views/CartPage/CartPage.js";
 
 //null   Anyone Can go inside
