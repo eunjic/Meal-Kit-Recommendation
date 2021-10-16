@@ -107,7 +107,7 @@ function LandingPage() {
 
 
             <div style ={{ display: 'flex', justifyContent: 'center'}}>
-                <Button size = "small" shape="round" type="danger" onClick={clickHandler} >  
+                <Button size = "small" shape="round" type="danger" onClick={clickHandler}>  
                     찜하기<Icon type = "heart" />
                 </Button>
                 
