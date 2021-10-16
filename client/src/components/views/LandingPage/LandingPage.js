@@ -118,11 +118,7 @@ function LandingPage() {
 
 
             <div style ={{ display: 'flex', justifyContent: 'center'}}>
-<<<<<<< HEAD
-                <Button size = "small" shape="round" type="danger" onClick={clickHandler}>  
-=======
-                <Button size = "small" shape="round" type="danger" onClick={clickHandler} href="/cart">  
->>>>>>> f020b26 (취향추천 페이지 완료)
+                <Button size = "small" shape="round" type="danger" onClick={clickHandler} href = "/cart">  
                     찜하기<Icon type = "heart" />
                 </Button>
                 
