@@ -74,7 +74,7 @@ function RegisterPage(props) {
 
           dispatch(registerUser(dataToSubmit)).then(response => {
             if (response.payload.success) {
-              props.history.push("/login");
+              props.history.push("/product/Choose");
             } else {
               alert(response.payload.err.errmsg)
             }
@@ -188,7 +188,7 @@ function RegisterPage(props) {
 
               <Form.Item {...tailFormItemLayout}>
                 <Button onClick={handleSubmit} type="primary" disabled={isSubmitting}>
-                  Submit
+                  Next
                 </Button>
               </Form.Item>
             </Form>

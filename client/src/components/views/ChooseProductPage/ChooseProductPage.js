@@ -1,25 +1,15 @@
 import React, {useEffect, useState} from 'react'
 import { FaCode, FaSortAmountDown } from "react-icons/fa";
 
-//백엔드에 요청
 import axios from "axios";
 import {Icon, Col, Card, Row} from 'antd';
 import Meta from 'antd/lib/card/Meta';
 import { Button} from 'antd';
 import { useDispatch } from 'react-redux';
-import {addToCart} from '../../../_actions/user_actions';
 
 
+function ChooseProductPage() {
 
-function LandingPage() {
-
-    const dispatch = useDispatch();
-    const clickHandler = () => {
-         //필요한 정보를 cart 필드에다가 넣어 준다.
-         dispatch(addToCart(Products._id))
-    }
-    
-   
     const [Products, setProducts] = useState([])  // 여러가지 들어가니까 array로
     const [Skip, setSkip] = useState(0)
     const [Limit, setLimit] = useState(16)
@@ -42,10 +32,10 @@ function LandingPage() {
             .then(response => {
                 if (response.data.success){
                     if(body.loadMore) {
-                        setProducts([...Products, ...response.data.productInfo])
+                        setProducts([...Products, ...response.data.chooseProduct])
                     }
                     else {
-                        setProducts(response.data.productInfo)
+                        setProducts(response.data.chooseProduct)
 
                     }
 
@@ -84,45 +74,29 @@ function LandingPage() {
 
 
         <Card 
-            
-            cover = {<a href ={product.url}><img style = {{ width: '100%', maaxheight: '200px' }}src = {product.image}/></a> }
+            //이미지 누르면 카트페이지로 이동 (카트에 담겨야함..)
+            cover = {<a href ={"/cart"}><img style = {{ width: '100%', maaxheight: '200px' }}src = {product.image}/></a> }
         >
        
             <Meta
             
             />
-
-            <div style = {{textAlign: 'center'}}>
-                {product.item} 
-                < br/>
-                <br/>
-                {product.money}원
-                
-            </div>
-            <br/>
-
-
-
-            <div style ={{ display: 'flex', justifyContent: 'center'}}>
-                <Button size = "small" shape="round" type="danger" onclick={clickHandler} href = {product._id}>  
-                    찜하기<Icon type = "heart" />
-                </Button>
-
-            </div>
         </Card>
     </Col>
     
     })
-// 오류나는 부분: href! " "안에 인식이 안된다.
+
     
     
     
     return (
-        <div style ={{width: '75%', margin: '3rem auto'}} >
+        <div style={{ width: '75%', margin: '3rem auto' }}>
 
-            <div style = {{textAlign: 'center'}}>
-                <h2>추천 밀키트 <Icon type = "coffee" /></h2>
+            <div style={{ textAlign: 'center' }}>
+            <h2> 선호하는 메뉴를 선택해주세요! <Icon type="heart" /></h2>
+            <p>회원님 취향 추천 데이터로 활용됩니다.</p>
             </div>
+
             {/* Filter */}
 
 
@@ -153,8 +127,7 @@ function LandingPage() {
 }
 
 
-export default LandingPage
-
+export default ChooseProductPage
 
 
 
