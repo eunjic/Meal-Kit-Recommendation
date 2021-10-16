@@ -5,6 +5,7 @@ import {
     AUTH_USER,
     LOGOUT_USER,
     ADD_TO_CART,
+    PRODUCT_CHOOSE,
   
 } from './types';
 import { USER_SERVER } from '../components/Config.js';
@@ -63,5 +64,6 @@ export function addToCart(id){
         payload: request
     }
 }
+
 
 

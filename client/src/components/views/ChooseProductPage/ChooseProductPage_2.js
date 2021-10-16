@@ -21,7 +21,7 @@ import {addToCart} from '../../../_actions/user_actions';
 //});
 //////////////
 
-function LandingPage() {
+function ChooseProductPage_2() {
 
     const dispatch = useDispatch();
     
@@ -45,7 +45,7 @@ function LandingPage() {
     }, [])
 
     const getProducts = (body)=> {
-        axios.post('/api/product/products', body)   //product 라우트에 보내기
+        axios.post('/api/product/specificProducts2', body)   //product 라우트에 보내기
             .then(response => {
                 if (response.data.success){
                     console.log(response.data)
@@ -63,21 +63,23 @@ function LandingPage() {
             })
     }
 
-    const loadMoreHandler = () => {
-
-        let skip = Skip + Limit
-        let body = {
-            skip : Skip,
-            limit : Limit,
-            loadMore: true
-        }
-
-        getProducts(body)
-
-        setSkip(skip)
-
-
+    const [count, setCount] = useState(1);
+    
+    const onIncrease = () => {
+        setCount(prevCount => prevCount +1);
     }
+
+
+    const pickHandler = () => {
+        if (count >=3){
+                window.location.href="/product/Choose3"
+        }
+        else{
+            alert("3개 이상 선택하세요.")
+        }
+    }
+
+  
 
     
     
@@ -89,7 +91,8 @@ function LandingPage() {
         const clickHandler = () => {
             //필요한 정보를 cart 필드에다가 넣어 준다.
             dispatch(addToCart(product._id))
-            console.log('product._id', product)
+            onIncrease()
+            console.log('count', count)
        }
 
         
@@ -99,36 +102,15 @@ function LandingPage() {
 
         <Card 
             
-            cover = {<a href ={product.url}><img style = {{ width: '100%', maxheight: '200px' }}src = {product.image}/></a> }
+            cover = {<a onClick={clickHandler}><img style = {{ width: '100%', maaxheight: '200px' }}src = {product.image}/></a> }
         >
        
             <Meta
             
             />
 
-            <div style = {{textAlign: 'center'}}>
-                {product.item} 
-                < br/>
-                <br/>
-                {product.money}원
-                
-            </div>
-            <br/>
+            
 
-
-
-            <div style ={{ display: 'flex', justifyContent: 'center'}}>
-<<<<<<< HEAD
-                <Button size = "small" shape="round" type="danger" onClick={clickHandler}>  
-=======
-                <Button size = "small" shape="round" type="danger" onClick={clickHandler} href="/cart">  
->>>>>>> f020b26 (취향추천 페이지 완료)
-                    찜하기<Icon type = "heart" />
-                </Button>
-                
-    
-
-            </div>
         </Card>
     </Col>
     
@@ -141,7 +123,7 @@ function LandingPage() {
         <div style ={{width: '75%', margin: '3rem auto'}} >
 
             <div style = {{textAlign: 'center'}}>
-                <h2>추천 밀키트 <Icon type = "coffee" /></h2>
+                <h2> 취향 추천을 위한 밀키트를 <br/>3개 이상 골라주세요. </h2>
             </div>
             {/* Filter */}
 
@@ -163,8 +145,11 @@ function LandingPage() {
             <br />
 
            
+           
+
+           
             <div style = {{ display : 'flex', justifyContent : 'center'}}>
-                <button onClick={loadMoreHandler}>더보기</button>
+                <Button onClick={pickHandler}>다음</Button>
             </div>
             
 
@@ -173,9 +158,4 @@ function LandingPage() {
 }
 
 
-export default LandingPage
-
-
-
-
-
+export default ChooseProductPage_2
