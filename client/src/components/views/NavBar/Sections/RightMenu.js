@@ -23,32 +23,31 @@ function RightMenu(props) {
     //로그인 전
     return (
       <Menu mode={props.mode}>
+        <Menu.Item key="choose">
+          <a href="/product/choose">choose</a>
+        </Menu.Item>
         <Menu.Item key="mail">
           <a href="/login">Signin</a>
         </Menu.Item>
         <Menu.Item key="app">
           <a href="/register">Signup</a>
         </Menu.Item>
+        
       </Menu>
     )
   } else {
     // 로그인후
     return (
       <Menu mode={props.mode}>
+        <Menu.Item key="cart">
+          <a href="/cart">cart</a>
+        </Menu.Item>
+        <Menu.Item key="choose">
+          <a href="/product/choose">choose</a>
+        </Menu.Item>
         <Menu.Item key="upload">
           <a href="/product/upload">Upload</a>     
-       
         </Menu.Item>
-        <Menu.Item key="cart" style = {{ paddingBottom: 3}}>
-          <Badge count = {5}>  
-            <a href ='/user/cart' className = 'head-example' style = {{ marginRight: -22, color: '#667777'}} >
-                <Icon type ="shopping-cart" style ={{fontSize: 30, marginBottom: 3 }} />
-            </a>
-          </Badge>
-          
-      
-        </Menu.Item>
-        
         <Menu.Item key="logout">
           <a onClick={logoutHandler}>Logout</a>
         </Menu.Item>
