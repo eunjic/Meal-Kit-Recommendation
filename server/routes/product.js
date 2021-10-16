@@ -29,6 +29,39 @@ router.post('/products', (req,res)  => {
     })
 
   })
+
+
+
+
+  //id=123123123,324234234,324234234  type=array
+router.get('/cartProducts', (req, res) => {
+
+  let type = req.query.type
+  let productIds = req.query.id
+
+  if (type === "array") {
+      //id=123123123,324234234,324234234 이거를 
+      //productIds = ['123123123', '324234234', '324234234'] 이런식으로 바꿔주기
+      let ids = req.query.id.split(',')
+      productIds = ids.map(item => {
+          return item
+      })
+
+  }
+
+  //productId를 이용해서 DB에서  productId와 같은 상품의 정보를 가져온다.
+
+  Product.find({ _id: { $in: productIds } })
+  .exec((err, product) => {
+      if (err) return res.status(400).send(err)
+      return res.status(200).send({product})
+  })
+
+})
+
+    
+
+
     
     //product collection 에 있는 특정 정보 가져오기 
     router.post('/specificProducts3', (req,res)  => {

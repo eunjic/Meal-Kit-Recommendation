@@ -7,7 +7,7 @@ import LoginPage from "./views/LoginPage/LoginPage.js";
 import RegisterPage from "./views/RegisterPage/RegisterPage.js";
 import NavBar from "./views/NavBar/NavBar";
 import Footer from "./views/Footer/Footer";
-import UploadProductPage from "./views/UploadProductPage/UploadProdcutPage.js";
+import UploadProductPage from "./views/UploadProductPage/UploadProductPage.js";
 import CartPage from "./views/CartPage/CartPage.js";
 import ChooseProductPage_1 from "./views/ChooseProductPage/ChooseProductPage_1.js";
 import ChooseProductPage_2 from "./views/ChooseProductPage/ChooseProductPage_2.js";
