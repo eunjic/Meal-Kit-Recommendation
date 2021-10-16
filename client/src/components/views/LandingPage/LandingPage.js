@@ -14,10 +14,7 @@ import {addToCart} from '../../../_actions/user_actions';
 function LandingPage() {
 
     const dispatch = useDispatch();
-    const clickHandler = () => {
-         //필요한 정보를 cart 필드에다가 넣어 준다.
-         dispatch(addToCart(Products._id))
-    }
+    
     
    
     const [Products, setProducts] = useState([])  // 여러가지 들어가니까 array로
@@ -77,7 +74,13 @@ function LandingPage() {
 
 
     const renderCards = Products.map((product, index) => {
-        console.log('product', product)
+        
+        const clickHandler = () => {
+            //필요한 정보를 cart 필드에다가 넣어 준다.
+            dispatch(addToCart(product._id))
+            console.log('product._id', product)
+       }
+
         
         return <Col lg = {6} md={8} xs ={24} key = {index}> 
         
@@ -104,9 +107,11 @@ function LandingPage() {
 
 
             <div style ={{ display: 'flex', justifyContent: 'center'}}>
-                <Button size = "small" shape="round" type="danger" onclick={clickHandler} href = {product._id}>  
+                <Button size = "small" shape="round" type="danger" onClick={clickHandler} >  
                     찜하기<Icon type = "heart" />
                 </Button>
+                
+    
 
             </div>
         </Card>

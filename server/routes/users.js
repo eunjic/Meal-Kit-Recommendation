@@ -77,7 +77,7 @@ router.post("/addToCart", auth, (req, res) => {
             {
                 $push: {
                     cart: {
-                        id: req.body.productID
+                        id: req.body.productId
                     }
                 }
             },
