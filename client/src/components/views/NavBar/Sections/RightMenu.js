@@ -23,9 +23,6 @@ function RightMenu(props) {
     //로그인 전
     return (
       <Menu mode={props.mode}>
-        <Menu.Item key="choose">
-          <a href="/product/choose">choose</a>
-        </Menu.Item>
         <Menu.Item key="mail">
           <a href="/login">Signin</a>
         </Menu.Item>
@@ -41,9 +38,6 @@ function RightMenu(props) {
       <Menu mode={props.mode}>
         <Menu.Item key="cart">
           <a href="/cart">cart</a>
-        </Menu.Item>
-        <Menu.Item key="choose">
-          <a href="/product/choose">choose</a>
         </Menu.Item>
         <Menu.Item key="upload">
           <a href="/product/upload">Upload</a>     

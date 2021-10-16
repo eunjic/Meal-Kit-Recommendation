@@ -70,8 +70,9 @@ router.get("/logout", auth, (req, res) => {
 
 
 router.post("/addToCart", auth, (req, res) => {
-   User.findOne({_id: req.user._id},
-    (err, userInfo) => {
+   //먼저 user collection에 해당 유저 정보 가져오기
+    User.findOne({_id: req.user._id},
+    (err, userInfo) => { //상품이 없을때
         User.findOneAndUpdate(
             {_id: req.user._id},
             {
@@ -80,8 +81,8 @@ router.post("/addToCart", auth, (req, res) => {
                         id: req.body.productId
                     }
                 }
-            },
-            {new: true},
+            }, 
+            {new: true}, //업뎃된 정보의 결과값을 받기 위해
             (err, userInfo) => {
                 if (err) return res.status(400).json({success: false, err})
                 res.status(200).send(userInfo.cart)
