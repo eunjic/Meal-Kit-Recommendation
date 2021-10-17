@@ -78,7 +78,7 @@ function LandingPage() {
         const clickHandler = () => {
             //필요한 정보를 cart 필드에다가 넣어 준다.
             dispatch(addToCart(product._id))
-            console.log('product._id', product)
+            console.log('cart', product)
        }
 
         

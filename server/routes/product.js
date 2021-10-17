@@ -52,8 +52,8 @@ router.get('/cartProducts', (req, res) => {
 
   Product.find({ _id: { $in: productIds } })
   .exec((err, product) => {
-      if (err) return res.status(400).send(err)
-      return res.status(200).send({product})
+    if (err) return res.status(400).send({success: false, err})
+    return res.status(200).json({success: true, product})
   })
 
 })

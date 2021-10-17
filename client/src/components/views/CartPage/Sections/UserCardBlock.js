@@ -3,14 +3,25 @@ import "./UserCardBlock.css"
 
 function UserCardBlock(props){
 
+    //const renderCartImage = (images) => {
+        //if (images.length > 0) {
+            //let image = images[0]
+            
+            //return `http://localhost:5000/${image}`
+            
+        //}
+    //}
 
-    
+
+    //이부분이 떠야하는데 안뜸
+
     const renderItems = () => (
         props.products && props.products.map(product => (
-            <tr>
+                <tr>
                 <td>
                 <img style={{ width: '70px' }} alt="product"
-                        src={product.images} />
+                        src={(product.image)} />
+                    
                 </td>
                 <td>
                     <button>
@@ -20,10 +31,8 @@ function UserCardBlock(props){
             </tr>
 
 
-        ))
+        )) 
     )
-
-
 
 
     return (
@@ -38,7 +47,6 @@ function UserCardBlock(props){
 
                 <tbody>
                     {renderItems()}
-                   
                 </tbody>
             </table>
         </div>
