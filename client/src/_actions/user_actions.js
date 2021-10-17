@@ -6,6 +6,7 @@ import {
     LOGOUT_USER,
     ADD_TO_CART,
     GET_CART_ITEMS
+  
 } from './types';
 import { USER_SERVER } from '../components/Config.js';
 
@@ -75,8 +76,10 @@ export function getCartItems(cartItems, userCart){
     //product collection에서 가져온후에
     //수량 정보를 넣어준다 부분 안함
 
+
     return {
         type: GET_CART_ITEMS,
         payload: request
     }
 }
+
