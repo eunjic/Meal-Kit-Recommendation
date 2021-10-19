@@ -4,7 +4,7 @@ import {
     AUTH_USER,
     LOGOUT_USER,
     ADD_TO_CART,
-    GET_CART_ITEMS,
+    GET_CART_ITEMS
     
     
 } from '../_actions/types';
