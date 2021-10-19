@@ -4,6 +4,7 @@ const { Product } = require('../models/product'); //Product에서 export한 것�
 
 
 
+
 //route에서 디비, 서버 사이 관리
 
 //=================================
@@ -58,6 +59,38 @@ router.get('/cartProducts', (req, res) => {
   })
 
 })
+
+
+
+
+
+  router.post('/python', (req,res) => {
+
+      const {parse, stringify} = require('flatted/cjs');
+      const {spawn} = require('child_process');
+      const py = spawn('python', ['../app.py']);
+      data = '쿠캣마켓 스노우콘치즈새우',
+      dataString ="",
+
+      py.stdout.on('data', function(data){    //py로부터 data오면 callback
+        dataString += data.toString();
+      });
+      py.stdout.on('end', function(){
+        console.log(dataString); //py쪽으로부터 end 오면 callback
+      });
+      py.stdin.write(stringify(data)); //paramter를 data로 하여 python 모듈 호출
+      py.stdin.end();
+    });
+
+    
+  
+ 
+
+
+
+
+
+  
 
     
 
@@ -131,7 +164,9 @@ router.get('/cartProducts', (req, res) => {
         })
 
         
-      })
+      });
+
+      
 
     
     
@@ -146,4 +181,4 @@ router.get('/cartProducts', (req, res) => {
 
 
 
-module.exports = router;
+module.exports = router

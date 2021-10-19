@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react'
 import { FaCode, FaSortAmountDown } from "react-icons/fa";
 
+
 //백엔드에 요청
 import axios from "axios";
 import {Icon, Col, Card, Row} from 'antd';
@@ -8,25 +9,57 @@ import Meta from 'antd/lib/card/Meta';
 import { Button} from 'antd';
 import { useDispatch } from 'react-redux';
 import {addToCart} from '../../../_actions/user_actions';
+import { getCartItemsId} from '../../../_actions/user_actions';
 
-///파이썬 코드 불러오기//
-//const { PythonShell } = require("python-shell");
-//let options = {
-//    scriptPath: "path/to/my/scripts",
-//    args: ["value1", "value2", "value3"]
-//};
-//PythonShell.run("my_script.py", options, function(err, data) {
-//    if (err) throw err;
-//    console.log(data);
-//});
-//////////////
+
+
+
+//여기서부터 고민//
+
+//const ls = spawn('ls',['app.py']);  //파이썬 구동
 
 function LandingPage() {
-
+    
     const dispatch = useDispatch();
+    /*useEffect(() => {
+
+        let cartItemsId = []
+        //리덕스 user state안에 cart 안에 상품이 들어있는지 확인
+        if (props.user.userData && props.user.userData.cart) {
+            if (props.user.userData.cart.length > 0) {
+                props.user.userData.cart.forEach(item => {
+                    cartItemsId.push(item.id)
+                    console.log(item.id)  //찜한거 아이디만 불러오기
+                    
+                    ///파이썬 코드 불러오기//
+                    /*const { PythonShell } = require("python-shell");
+                    let options = {
+                        args: [item.id]
+                    };
+                    PythonShell.run("/server/app.py", options, function(err, data) {
+                        if (err) throw err;
+                        console.log(data);
+                    });
+                    
+    
+                    //이부분 해결 필요!
+                    const spawn  = require('child_process').spawn;
+                    const result = spawn ('python', ['/server/app.py', '615adc1562babc3c854ab6c6']);
+                    result.stdout.on('data', (result)=>{
+                        console.log(result.toString());
+                    })
+                })
+                dispatch(getCartItemsId(cartItemsId, props.user.userData.cart))
+                     
+            }
+        }
+    }, [props.user.userData])*/
+
+
+
     
     
-   
+    
     const [Products, setProducts] = useState([])  // 여러가지 들어가니까 array로
     const [Skip, setSkip] = useState(0)
     const [Limit, setLimit] = useState(16)
@@ -44,11 +77,26 @@ function LandingPage() {
 
     }, [])
 
+    
+
+    const runPython = event => {
+        event.persist();
+        axios.post('/api/product/python', event)   //product 라우트에 보내기
+            .then(response => {
+                if (response.data.success){
+                    console.log(response.data)
+
+                } else {
+                    alert(" 결과를 가져오는데 실패 했습니다. ")
+                }
+            })
+    }
+
     const getProducts = (body)=> {
         axios.post('/api/product/products', body)   //product 라우트에 보내기
             .then(response => {
                 if (response.data.success){
-                    console.log(response.data)
+                    
                     if(body.loadMore) {
                         setProducts([...Products, ...response.data.productInfo])
                     }
@@ -89,12 +137,13 @@ function LandingPage() {
         const clickHandler = () => {
             //필요한 정보를 cart 필드에다가 넣어 준다.
             dispatch(addToCart(product._id))
-            console.log('cart', product)
+            
        }
+
+
 
         
         return <Col lg = {6} md={8} xs ={24} key = {index}> 
-        
 
 
         <Card 
@@ -122,6 +171,7 @@ function LandingPage() {
                     찜하기<Icon type = "heart" />
                 </Button>
                 
+                
     
 
             </div>
@@ -139,6 +189,10 @@ function LandingPage() {
             <div style = {{textAlign: 'center'}}>
                 <h2>추천 밀키트 <Icon type = "coffee" /></h2>
             </div>
+
+            <Button onClick={runPython}>  
+                    결과보기
+            </Button>
             {/* Filter */}
 
 
@@ -165,7 +219,9 @@ function LandingPage() {
             
 
         </div>
+        
     )
+    
 }
 
 
