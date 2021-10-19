@@ -4,7 +4,7 @@ import {
     AUTH_USER,
     LOGOUT_USER,
     ADD_TO_CART,
-    GET_CART_ITEMS
+    GET_CART_ITEMS,
     
     
 } from '../_actions/types';
@@ -30,6 +30,7 @@ export default function(state={},action){
             }
         case GET_CART_ITEMS: //cartdetail을 만듬
             return { ...state, cartDetail: action.payload }
+
             
         
         default:

@@ -1,12 +1,16 @@
 import { PromiseProvider } from 'mongoose'
-import React, { useEffect } from 'react'
+import React, { useEffect , useState } from 'react'
 import { useDispatch } from 'react-redux';
-import { getCartItems, removeCartItem, onSuccessBuy } from '../../../_actions/user_actions';
+import {Icon} from 'antd';
+import { getCartItems, onSuccessBuy } from '../../../_actions/user_actions';
 import UserCardBlock from './Sections/UserCardBlock'
 
 function CartPage(props) {
 
     const dispatch = useDispatch();
+
+    const [ShowTotal, setShowTotal] = useState(false)
+
     useEffect(() => {
 
         let cartItems = []
@@ -22,15 +26,15 @@ function CartPage(props) {
         }
     }, [props.user.userData])
 
+    
 
 
     return (
         <div style={{ width: '85%', margin: '3rem auto' }}>
-            <h1>찜 목록</h1>
+            <h1>My Cart List <Icon type = "shopping-cart" /> </h1>
 
             <div>
-                <UserCardBlock products={props.user.cartDetail && 
-                                        props.user.cartDetail.product} />
+                <UserCardBlock products={props.user.cartDetail} />
             </div>
             
         </div>

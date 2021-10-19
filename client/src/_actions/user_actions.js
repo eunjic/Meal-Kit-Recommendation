@@ -5,7 +5,7 @@ import {
     AUTH_USER,
     LOGOUT_USER,
     ADD_TO_CART,
-    GET_CART_ITEMS
+    GET_CART_ITEMS,
   
 } from './types';
 import { USER_SERVER } from '../components/Config.js';
@@ -71,11 +71,6 @@ export function getCartItems(cartItems, userCart){
     const request = axios.get(`/api/product/cartProducts?id=${cartItems}&type=array`) //여러개를 가져옴 //
     .then(response => response.data.product);
     //user_reducer의 cartdetail action.payload로 들어감
-    
-    //cartitem들에 해당하는 정보들을 
-    //product collection에서 가져온후에
-    //수량 정보를 넣어준다 부분 안함
-
 
     return {
         type: GET_CART_ITEMS,

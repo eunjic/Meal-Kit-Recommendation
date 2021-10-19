@@ -118,7 +118,7 @@ function LandingPage() {
 
 
             <div style ={{ display: 'flex', justifyContent: 'center'}}>
-                <Button size = "small" shape="round" type="danger" onClick={clickHandler} href = "/cart">  
+                <Button size = "small" shape="round" type="danger" onClick={clickHandler}>   
                     찜하기<Icon type = "heart" />
                 </Button>
                 
@@ -129,7 +129,7 @@ function LandingPage() {
     </Col>
     
     })
-// 오류나는 부분: href! " "안에 인식이 안된다.
+// 오류나는 부분: href! " "안에 인식이 안된다. href = "/cart"
     
     
     
