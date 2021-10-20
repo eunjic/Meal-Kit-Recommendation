@@ -33,15 +33,9 @@ function RightMenu(props) {
       </Menu>
     )
   } else {
-    // 로그인후
+    // 로그인후 (업로드 버튼 지움)
     return (
       <Menu mode={props.mode}>
-
-        <Menu.Item key="upload">
-          <a href="/product/upload">Upload</a>     
-        </Menu.Item>
-
-      
   
         <Menu.Item key="choose">
           <a href="/product/Choose1">choose</a>     
