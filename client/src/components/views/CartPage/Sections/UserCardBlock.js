@@ -11,9 +11,9 @@ function UserCardBlock(props){
                 
             <tr>
                 <td>
-                <img style={{ width: '70px' }} alt="product"
-                        src={(product.image)} />
-                    
+                {<a href ={product.url}>
+                <img style = {{ width: '100px'}} alt="product" src = {product.image}/></a> }
+                
                 </td>
                 <td>
                  {product.item}

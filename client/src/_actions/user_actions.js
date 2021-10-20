@@ -79,7 +79,7 @@ export function getCartItems(cartItems, userCart){
 }
 
   // id만 보내기
-  /*export function getCartItemsId(cartItems, userCart){
+  export function getCartItemsId(cartItems, userCart){
   
 
     const request = axios.get(`/api/product/cartProductsId?id=${cartItems}&type=array`) //여러개를 가져옴 //
@@ -95,9 +95,7 @@ export function getCartItems(cartItems, userCart){
         type: GET_CART_ITEMS,
         payload: request
     }
-}*/
-
-
+}
 
 
 

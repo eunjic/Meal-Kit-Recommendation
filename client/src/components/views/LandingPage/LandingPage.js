@@ -14,7 +14,9 @@ import loadable from "@loadable/component";
 
 
 //여기서부터 고민//
-
+//const express = require('express');
+//const {spawn} = require('child_process');
+//const app = express()
 //const ls = spawn('ls',['app.py']);  //파이썬 구동
 
 function LandingPage() {
@@ -50,7 +52,7 @@ function LandingPage() {
                             }
                         })
                     ///파이썬 코드 불러오기//
-                    /*const { PythonShell } = require("python-shell");
+                    const { PythonShell } = require("python-shell");
                     let options = {
                         args: [item.id]
                     };
@@ -71,8 +73,7 @@ function LandingPage() {
                      
             }
         }
-    }, [props.user.userData])*/
-
+    }, [props.user.userData]) */
 
 
     
@@ -229,8 +230,3 @@ function LandingPage() {
 
         
 export default LandingPage
-
-
-
-
-
