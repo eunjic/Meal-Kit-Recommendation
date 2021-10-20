@@ -16,6 +16,7 @@
   "author": "John ahn",
   "license": "ISC",
   "dependencies": {
+    "@loadable/component": "^5.15.0",
     "bcrypt": "^3.0.6",
     "body-parser": "^1.18.3",
     "cookie-parser": "^1.4.3",
@@ -30,6 +31,7 @@
     "python-shell": "^3.0.1",
     "react-native-fix-image": "^2.1.0",
     "react-redux": "^5.0.7",
+    "request": "^2.88.2",
     "saslprep": "^1.0.3",
     "supports-color": "^7.2.0"
   },

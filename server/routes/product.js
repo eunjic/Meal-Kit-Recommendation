@@ -60,17 +60,58 @@ router.get('/cartProducts', (req, res) => {
 
 })
 
+//프론트로부터 post 요청 들어오면 플라스크 서버의 api 호출해서 결과를 py로부터 받아 다시 프론트에 넘겨주는 코드
+router.post('/python', (req, res) => {
+  let body = req.body;
+  const itemId = body.id
+
+  // options에 요청의 종류(method)와 호출할 api의 url(uri), 그리고 넘겨줄 인자(qs)를 명시
+  const Result = (callback)=>{
+      const options = {
+          method: 'POST',
+          uri: "http://127.0.0.1:5000",
+          qs: {
+                itemId      //string으로
+          }
+      }
+//아까 본 options을 담아 request 요청을 보낸 뒤 그 결과를 result에 담는다.
+// 이 모든 과정을 Result라는 상수에 담는다
+      request(options, function (err, res, body) {
+          callback(undefined, {
+              result:body
+          });
+      });
+  }
+
+  Result((err, {result}={})=>{
+      if(err){
+          console.log("error!!!!");
+          res.send({
+              message: "fail",
+              status: "fail"
+          });
+      }
+      //  플라스크로부터 넘어온 정보가 result에 담겼을 것이고
+      let sendData = JSON.parse(result);
+      res.send({
+          message: "from flask",
+          status: "success",
+          data:{
+              sendData
+          }
+      });
+  })
+
+})
 
 
 
-
-  router.post('/python', (req,res) => {
-
-      const {parse, stringify} = require('flatted/cjs');
+ /* router.post('/python', (req,res) => {
+     
       const {spawn} = require('child_process');
       const py = spawn('python', ['../app.py']);
       data = '쿠캣마켓 스노우콘치즈새우',
-      dataString ="",
+      dataSting ="",
 
       py.stdout.on('data', function(data){    //py로부터 data오면 callback
         dataString += data.toString();
@@ -78,22 +119,10 @@ router.get('/cartProducts', (req, res) => {
       py.stdout.on('end', function(){
         console.log(dataString); //py쪽으로부터 end 오면 callback
       });
-      py.stdin.write(stringify(data)); //paramter를 data로 하여 python 모듈 호출
+      py.stdin.write(dataString); //paramter를 data로 하여 python 모듈 호출
       py.stdin.end();
     });
-
-    
-  
- 
-
-
-
-
-
-  
-
-    
-
+*/
 
     
     //product collection 에 있는 특정 정보 가져오기 
