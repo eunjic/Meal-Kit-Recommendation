@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const { Product } = require('../models/product'); //Product에서 export한 것을 받아온다.
+const request = require('request');
 
 
 

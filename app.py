@@ -19,7 +19,7 @@ api = Api(app)
 app.config['DEBUG'] = True
 
 @app.route('/flask',method=['GET'])
-# , methods =['POST']
+# , methods =['POST']~
 #@app.route는 특정 URL에 접속하면 바로 다음 줄에 있는 함수를 호출하는 플라스크의 데코레이터다.
 #데코레이터(decorator)란 기존 함수를 변경하지 않고 추가 기능을 덧붙일 수 있도록 해주는 함수
 def test():
@@ -65,12 +65,13 @@ def test():
 
             #data frame으로 만들고 vote_count로 정렬한 뒤 return
             result = df.iloc[sim_index]   #여기서는 정렬 필요없음: 하게된다면 money를 int로 바꾸기!
+            result = json.dumps(result)
             return result
 
 
 
-        return recommendation(df, item = "[프레시지] 돈사골 순대국").to_html()
-        # result = json.dumps(result)
+        return recommendation(df, item = "[프레시지] 돈사골 순대국")
+        # 
         #.map(str)
         #.to_json(orient = 'columns')
         #(orient = 'table')
