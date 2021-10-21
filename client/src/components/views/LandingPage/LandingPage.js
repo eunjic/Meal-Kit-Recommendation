@@ -9,7 +9,7 @@ import Meta from 'antd/lib/card/Meta';
 import { Button} from 'antd';
 import { useDispatch } from 'react-redux';
 import {addToCart} from '../../../_actions/user_actions';
-import loadable from "@loadable/component";
+
 
 
 
@@ -20,16 +20,21 @@ import loadable from "@loadable/component";
 //const ls = spawn('ls',['app.py']);  //파이썬 구동
 
 function LandingPage() {
-    axios.post('http://localhost:3000/api/product/python', "[프레시몬스터] 로제 파스타")
-                        .then(response => {
-                            if (response.data.success){
-                              console.log(response.data)
-        
-                            } else {
-                               alert(" 결과를 가져오는데 실패 했습니다. ")
-                            }
-                        })
     const dispatch = useDispatch();
+    axios.get('/api/product/python')
+        .then((res) => console.log(res.data))
+        .catch((err) => console.log(err.res));
+    
+    /*axios.post('http://localhost:3000/api/product/python', "[프레시몬스터] 로제 파스타")
+        .then(response => {
+            if (response.data.success){
+                console.log(response.data)
+
+            } else {
+                alert(" 결과를 가져오는데 실패 했습니다. ")
+            }
+        })*/
+    
 
     /*useEffect(() => {
 
@@ -38,21 +43,17 @@ function LandingPage() {
     
         //리덕스 user state안에 cart 안에 상품이 들어있는지 확인
         
-       /* if (props.user.userData && props.user.userData.cart) {
+       /*if (props.user.userData && props.user.userData.cart) {
             if (props.user.userData.cart.length > 0) {
                 props.user.userData.cart.forEach(item => {
-                    //console.log(item.id)  //찜한거 아이디만 불러오기
-                    /*axios.post('/api/product/python', item)
-                        .then(response => {
-                            if (response.data.success){
-                              console.log(response.data)
-        
-                            } else {
-                               alert(" 결과를 가져오는데 실패 했습니다. ")
-                            }
-                        })
+                    console.log(item.id)  //찜한거 아이디만 불러오기
+                    axios.post('/api/product/python',{data:item.id})
+                        .then((res) => console.log(res.data))
+                        .catch((err) => console.log(err.res));*/
+
+                   
                     ///파이썬 코드 불러오기//
-                    const { PythonShell } = require("python-shell");
+                    /*const { PythonShell } = require("python-shell");
                     let options = {
                         args: [item.id]
                     };
@@ -195,6 +196,8 @@ function LandingPage() {
             <div style = {{textAlign: 'center'}}>
                 <h2>추천 밀키트 <Icon type = "coffee" /></h2>
             </div>
+
+            
 
            
             {/* Filter */}

@@ -61,15 +61,23 @@ router.get('/cartProducts', (req, res) => {
 })
 
 //프론트로부터 post 요청 들어오면 플라스크 서버의 api 호출해서 결과를 py로부터 받아 다시 프론트에 넘겨주는 코드
-router.post('/python', (req, res) => {
-  let body = req.body;
+router.get('/python', function(req, res){
+  request('http://127.0.0.1:5000/flask', function (error, response, body){
+    console.error('error:', error); // Print the error
+    console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
+    console.log('body:', body); // Print the data received
+    res.send(body); //Display the response on the website
+  });      
+});
+// when a user visits the /home endpoint, a get request is sent to http://127.0.0.1:5000/flask which is our endpoint for the flask server. We will receive the string “Flask Server” as a response back from the Flask.
+  /*let body = req.body;
   const itemId = body.id
 
   // options에 요청의 종류(method)와 호출할 api의 url(uri), 그리고 넘겨줄 인자(qs)를 명시
   const Result = (callback)=>{
       const options = {
           method: 'POST',
-          uri: "http://127.0.0.1:5000",
+          url: "http://127.0.0.1:5000/flask",
           qs: {
                 itemId      //string으로
           }
@@ -102,7 +110,7 @@ router.post('/python', (req, res) => {
       });
   })
 
-})
+})*/
 
 
 
