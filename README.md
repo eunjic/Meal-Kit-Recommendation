@@ -1,1 +1,10 @@
-밀키트 통합 추천 플랫폼 백엔드와 프론트엔드입니다.
+Project Title
+==============
+Meal-Kit Recommendation Platform
+
+Motivation
+===============
+We propose a new platform that integrates Meal-Kit products. (including user recommendation)
+
+Demo Video
+=============
